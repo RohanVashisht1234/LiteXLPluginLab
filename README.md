@@ -11,6 +11,10 @@
     - the cargo.toml file contains the nessecary libraries required to build the backend framework.
     - Inside the static folder, you can see a main.ts file and a main.js file used only for the @plugins page.
     - You can edit the main.ts and compile it to main.js using npm's tsc.
+### Why rohanasan backend framework?
+- to ensure speed, stability, and easiness all at the same time.
+### Why type script instead of javascript directly?
+- to ensure code's readability, and also to add some strictness to how the code is typed to avoid any possible errors.
 ---
 # Contribution
 eel free to fork this repo/open a pr/ open an issues.
