@@ -1,4 +1,4 @@
-# Use Alpine Linux as the base image
+# Use Rust as the base image
 FROM rust:latest
 
 # Install system dependencies

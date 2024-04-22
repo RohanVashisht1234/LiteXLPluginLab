@@ -53,14 +53,13 @@
         </div>
     </nav>
     <div class="px-4 pt-5 my-5 text-center border-bottom">
-        <h1 class="display-4 fw-bold">Lite-xl Plugin Labs</h1>
+        <h1 id="name" class="display-4 fw-bold">{Loading}</h1>
         <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">Discover all plugins of lite-xl and make lite-xl your own with plugins made by people
-                across the globe. Explore the vast array of functionalities, tailored to suit your every coding need,
-                With lite-xl and its community, innovation knows no bounds indeed.</p>
+            <p id="description" class="lead mb-4">{Loading}</p>
+            <h4>Run the following to install:</h4>
+            <p id="install_command" style="background-color: #1e1e1e;border-radius: 20px;font-size: 20px;">{loading}</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                <a href="/@plugins" type="button" class="btn btn-primary btn-lg px-4 me-sm-3">See the list</a>
-                <a href="https://lite-xl.com/en/downloads" type="button" class="btn btn-outline-secondary btn-lg px-4">Download Lite-xl</a>
+                <a href="https://lite-xl.com/en/downloads" type="button" class="btn btn-outline-secondary btn-lg px-4">Download lpm</a>
             </div>
         </div>
         <div class="overflow-hidden" style="max-height: 30vh;">
@@ -78,6 +77,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+    <script type="module" src="/static/plugin_slug.js"></script>
 </body>
 
 </html>
