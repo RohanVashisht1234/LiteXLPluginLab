@@ -10,6 +10,8 @@
     - the html folder contains the html files that are sent according to the main.rs file.
     - the dockerfile contains the source code that is executed on the render.com.
     - the cargo.toml file contains the nessecary libraries required to build the backend framework.
+    - Inside the static folder, you can see a main.ts file and a main.js file used only for the @plugins page.
+    - You can edit the main.ts and compile it to main.js using npm's tsc.
 ---
 # Contribution
 eel free to fork this repo/open a pr/ open an issues.
