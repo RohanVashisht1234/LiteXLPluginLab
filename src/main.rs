@@ -1,5 +1,4 @@
-use rohanasan::{rohanasan, send_file, send_http_response, serve, Request, DEFAULT_HTML_HEADER};
-mod database;
+use rohanasan::{rohanasan, send_file, serve, Request, DEFAULT_HTML_HEADER};
 
 fn handle(req: Request) -> String {
     if req.path == "/" {
