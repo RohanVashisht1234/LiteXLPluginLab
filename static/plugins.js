@@ -57,7 +57,7 @@ function handle_typing() {
           <h5 class="card-title">${title.replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</h5>
           <h6 class="card-subtitle mb-2 text-muted">${name.replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</h6>
           <p class="card-text markdownContent">${marked.parse(description).replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</p>
-          <a href="/@plugins/${name.replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}" class="card-link btn btn-primary">View plugin</a>
+          <a href="/@plugins/${name}" class="card-link btn btn-primary">View plugin</a>
         </div>
         </div>`;
         }
