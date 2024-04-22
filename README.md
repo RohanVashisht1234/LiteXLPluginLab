@@ -17,4 +17,4 @@
 - to ensure code's readability, and also to add some strictness to how the code is typed to avoid any possible errors.
 ---
 # Contribution
-eel free to fork this repo/open a pr/ open an issues.
+feel free to fork this repo/open a pr/ open an issues.
