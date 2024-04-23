@@ -1,7 +1,0 @@
-[package]
-name = "LiteXLPluginLab"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-rohanasan = "0.5.47"

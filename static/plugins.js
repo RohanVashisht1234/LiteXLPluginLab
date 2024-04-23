@@ -14,6 +14,7 @@ function handle_json_data(data) {
             continue;
         }
         var name = JSON.stringify(data["addons"][i]['id']);
+        var manifest_name = "";
         name = name.replace("\"", "").replace("\"", "");
         var title = name;
         title = title.replace("_", " ");
@@ -21,12 +22,16 @@ function handle_json_data(data) {
         var description = JSON.stringify(data["addons"][i]['description']);
         description = description.replace("\"", "").replace("\"", "");
         var parent_div = document.getElementById("place_cards_here");
+        if ("name" in data["addons"][i]) {
+            title = JSON.stringify(data["addons"][i]['name']);
+            title = title.replace("\"", "").replace("\"", "");
+        }
         parent_div.innerHTML += `<div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${title}</h5>
           <h6 class="card-subtitle mb-2 text-muted">${name}</h6>
           <p class="card-text markdownContent">${marked.parse(description)}</p>
-          <a href="/@plugins/${name}" class="card-link btn btn-primary">View plugin</a>
+          <a href="/@plugins/plugin_slug?plugin=${name}" class="card-link btn btn-primary">View plugin</a>
         </div>
         </div>`;
     }
@@ -51,13 +56,17 @@ function handle_typing() {
         var description = JSON.stringify(data["addons"][i]['description']);
         description = description.replace("\"", "").replace("\"", "");
         var thing_that_is_being_typed_in_the_search_box = document.getElementById("searchbox").value;
+        if ("name" in data["addons"][i]) {
+            title = JSON.stringify(data["addons"][i]['name']);
+            title = title.replace("\"", "").replace("\"", "");
+        }
         if (title.includes(thing_that_is_being_typed_in_the_search_box) || description.includes(thing_that_is_being_typed_in_the_search_box) || name.includes(thing_that_is_being_typed_in_the_search_box)) {
             parent_div.innerHTML += `<div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${title.replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</h5>
           <h6 class="card-subtitle mb-2 text-muted">${name.replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</h6>
           <p class="card-text markdownContent">${marked.parse(description).replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</p>
-          <a href="/@plugins/${name}" class="card-link btn btn-primary">View plugin</a>
+          <a href="/@plugins/plugin_slug?plugin=${name}" class="card-link btn btn-primary">View plugin</a>
         </div>
         </div>`;
         }
@@ -76,7 +85,7 @@ function main() {
         console.error('Error fetching JSON:', error);
     });
 
-    document.getElementById("searchbox").oninput = function(){handle_typing()};
+    document.getElementById("searchbox").oninput = function () { handle_typing() };
 
     return 0;
 }

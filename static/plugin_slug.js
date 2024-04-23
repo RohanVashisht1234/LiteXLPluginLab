@@ -2,6 +2,7 @@
 
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
+const searchParams = new URLSearchParams(window.location.search);
 const jsonURL = "https://raw.githubusercontent.com/lite-xl/lite-xl-plugins/master/manifest.json";
 
 function handle_json_data(data) {
@@ -19,7 +20,8 @@ function handle_json_data(data) {
 
         description = JSON.stringify(data["addons"][i]['description']);
         description = description.replace("\"", "").replace("\"", "");
-        if (name == document.URL.split("/")[document.URL.split("/").length - 1]) {
+
+        if (name == searchParams.get("plugin")) {
             valid_page = true;
             break;
         }
@@ -28,6 +30,10 @@ function handle_json_data(data) {
         var title = name;
         title = title.replace("_", " ");
         title = title.charAt(0).toUpperCase() + title.slice(1);
+        if ("name" in data["addons"][i]) {
+            title = JSON.stringify(data["addons"][i]['name']);
+            title = title.replace("\"", "").replace("\"", "");
+        }
         document.getElementById("name").innerHTML = title;
         document.getElementById("description").innerHTML = marked.parse(description);
         document.getElementById("install_command").innerHTML = `<span style="color:pink;">lpm</span> <span style="color:lightyellow">install</span> <span style="color:skyblue">${name}</span>`;
