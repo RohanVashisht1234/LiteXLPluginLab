@@ -2,7 +2,6 @@ pub const TOP: &str = r#"<!doctype html>
 <html lang='en' data-bs-theme='dark'>
 
 <head>
-    <script src='https://cdn.jsdelivr.net/npm/marked/marked.min.js'></script>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>{%TITLE%}</title>
@@ -40,6 +39,16 @@ pub const TOP: &str = r#"<!doctype html>
 "#;
 
 pub const BOTTOM: &str = r#"
+    <footer class='py-3 my-4'>
+        <ul class='nav justify-content-center border-bottom pb-3 mb-3'>
+        <li class='nav-item'><a href='/' class='nav-link px-2 text-muted'>Home</a></li>
+        <li class='nav-item'><a href='/@plugins' class='nav-link px-2 text-muted'>Plugins</a></li>
+        <li class='nav-item'><a href='https://lite-xl.com/' class='nav-link px-2 text-muted'>Lite-xl website</a></li>
+        <li class='nav-item'><a href='https://github.com/RohanVashisht1234/LiteXLPluginLab' class='nav-link px-2 text-muted'>This website's source code</a></li>
+        <li class='nav-item'><a href='https://discord.gg/UQKnzBhY5H' class='nav-link px-2 text-muted'>Join Discord</a></li>
+        </ul>
+        <p class='text-center text-muted'>© 2024 <a href="https://github.com/rohanvashisht1234">Rohan Vashisht</a></p>
+    </footer>
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js'
 integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz'
 crossorigin='anonymous'></script>
