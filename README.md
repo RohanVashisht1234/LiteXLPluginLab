@@ -1,1 +1,1 @@
-# Litexlpluginlabstatic
+# The main repository for the source code of [lite-xl's plugins website](https://rohanvashisht1234.github.io/)

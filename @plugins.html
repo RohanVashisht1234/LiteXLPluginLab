@@ -7,6 +7,17 @@
     <title>Lite-xl plugins lab</title>
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'
         integrity='sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH' crossorigin='anonymous'>
+    <style>
+        .the_search_area {
+            width: 70%;
+        }
+
+        @media screen and (max-width: 600px) {
+            .the_search_area {
+                width: 95%;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -36,14 +47,16 @@
             </div>
         </div>
     </nav>
-    <center style="padding:40px;">
+    <center>
+        <br>
         <h1>Search for a plugins: </h1>
         <div style="padding:20px;"></div>
-        <div class="input-group input-group-lg" style="width:70%;">
+        <div class="the_search_area input-group input-group-lg">
             <span class="input-group-text" id="inputGroup-sizing-lg">Search</span>
             <input type="text" class="form-control" id="searchbox" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-lg">
         </div>
+        <br>
     </center>
     <div id="place_cards_here" style="display: flex; flex-wrap: wrap; justify-content: space-around;">
         <!--This would be populated by the main.js file-->

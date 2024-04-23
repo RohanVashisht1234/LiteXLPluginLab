@@ -37,6 +37,13 @@ function handle_json_data(data) {
         document.getElementById("name").innerHTML = title;
         document.getElementById("description").innerHTML = marked.parse(description);
         document.getElementById("install_command").innerHTML = `<span style="color:pink;">lpm</span> <span style="color:lightyellow">install</span> <span style="color:skyblue">${name}</span>`;
+        document.getElementById("install_command_miq").innerHTML = `<span style="color:pink;">local</span> <span style="color:lightyellow">config</span> = <span style="color:lightyellow">require</span> <span style="color:skyblue">'core.config'</span><br><br>
+<span style="color:lightyellow">config</span>.plugins.miq.plugins = {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:skyblue">'${name}'</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+}
+`;
     }
     else {
         document.write("<h1>THIS IS NOT A PLUGIN</h1>");
