@@ -1,16 +1,30 @@
-use rohanasan::{rohanasan, send_file, serve, Request, DEFAULT_HTML_HEADER};
+pub mod database;
+use database::{BOTTOM, TOP};
+
+use rohanasan::{
+    rohanasan, send_file_top_bottom, serve, Request, DEFAULT_404_HEADER,
+    DEFAULT_HTML_HEADER,
+};
 
 fn handle(req: Request) -> String {
     if req.path == "/" {
-        send_file(DEFAULT_HTML_HEADER, "./html/index.html", req)
+        // Send index page on path /
+        send_file_top_bottom(DEFAULT_HTML_HEADER, "./html/index.html", TOP.replace("{%TITLE%}", "Index").as_str(), BOTTOM, req)
     } else if req.path == "/@plugins" {
-        send_file(DEFAULT_HTML_HEADER, "./html/plugins.html", req)
+        // Send plugins page on path /@plugins
+        send_file_top_bottom(DEFAULT_HTML_HEADER, "./html/plugins.html", TOP.replace("{%TITLE%}", "Plugins").as_str(), BOTTOM, req)
     } else if req.path.starts_with("/@plugins/") {
-        send_file(DEFAULT_HTML_HEADER, "./html/plugin_slug.html", req)
-    } else if req.path == "/@about" {
-        send_file(DEFAULT_HTML_HEADER, "./html/about.html", req)
+        // Send plugin_slug page on path /@plugins/*
+        send_file_top_bottom(
+            DEFAULT_HTML_HEADER,
+            "./html/plugin_slug.html",
+            TOP.replace("{%TITLE%}", "View plugin").as_str(),
+            BOTTOM,
+            req,
+        )
     } else {
-        send_file(DEFAULT_HTML_HEADER, "./html/index.html", req)
+        // Send 404 on all other pages
+        send_file_top_bottom(DEFAULT_404_HEADER, "./html/404.html", TOP, BOTTOM, req)
     }
 }
 

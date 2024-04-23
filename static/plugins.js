@@ -4,7 +4,7 @@ import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
 const jsonURL = "https://raw.githubusercontent.com/lite-xl/lite-xl-plugins/master/manifest.json";
 
-var global_data = "";
+var global_data = ""; // This gets populated by the function handle_json_data
 
 function handle_json_data(data) {
     console.log(data);
@@ -75,7 +75,10 @@ function main() {
     }).catch(function (error) {
         console.error('Error fetching JSON:', error);
     });
+
+    document.getElementById("searchbox").oninput = function(){handle_typing()};
+
     return 0;
 }
-document.getElementById("searchbox").oninput = function(){handle_typing()}
+
 let _ = main();

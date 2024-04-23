@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-rohanasan = "0.5.46"
+rohanasan = "0.5.47"

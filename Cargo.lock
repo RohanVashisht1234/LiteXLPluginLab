@@ -200,9 +200,9 @@ dependencies = [
 
 [[package]]
 name = "rohanasan"
-version = "0.5.46"
+version = "0.5.47"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4d6938ca7f77841b176b5faad171906973196808fb6c9f1104df280b414c4ffa"
+checksum = "651f54bb620e900cabaf29d0f625ee038f3da440a9e21887b8d230e2de6f4a7c"
 dependencies = [
  "tokio",
  "urldecode",
