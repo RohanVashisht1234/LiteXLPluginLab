@@ -15,11 +15,9 @@ function handle_json_data(data) {
         if (i < 3) {
             continue;
         }
-        name = JSON.stringify(data["addons"][i]['id']);
-        name = name.replace("\"", "").replace("\"", "");
+        name = data["addons"][i]['id'];
 
-        description = JSON.stringify(data["addons"][i]['description']);
-        description = description.replace("\"", "").replace("\"", "");
+        description = data["addons"][i]['description'];
 
         if (name == searchParams.get("plugin")) {
             valid_page = true;
@@ -29,10 +27,9 @@ function handle_json_data(data) {
     if (valid_page) {
         var title = name;
         title = title.replace("_", " ");
-        title = title.charAt(0).toUpperCase() + title.slice(1);
+        title = title[0].toUpperCase() + title.slice(1);
         if ("name" in data["addons"][i]) {
-            title = JSON.stringify(data["addons"][i]['name']);
-            title = title.replace("\"", "").replace("\"", "");
+            title = data["addons"][i]['name'];
         }
         document.getElementById("name").innerHTML = title;
         document.getElementById("description").innerHTML = marked.parse(description);
@@ -46,7 +43,7 @@ function handle_json_data(data) {
 `;
     }
     else {
-        document.write("<h1>THIS IS NOT A PLUGIN</h1>");
+        window.location = "/404";
     }
 }
 
