@@ -11,17 +11,18 @@ var globalData = null;
 
 function handleJsonData(data) {
     globalData = data;
-    const html = buildHtml(data);
-    parentDiv.innerHTML = html;
+    parentDiv.innerHTML = buildHtml(data);
+    return;
 }
 
 function buildHtml(data) {
     let html = "";
+
     for (let i = 3; i < data.addons.length; i++) {
         const addon = data.addons[i];
         const name = addon.id;
-        let description = addon.description;
-        let title = addon.name ? addon.name : name[0].toUpperCase() + name.slice(1).replace("_", " ");
+        const description = addon.description;
+        const title = addon.name ? addon.name : name[0].toUpperCase() + name.slice(1).replace("_", " ");
         html += `<div class="card" style="width: 18rem;"><div class="card-body">
 <h5 class="card-title">${title}</h5>
 <h6 class="card-subtitle mb-2 text-muted">${name}</h6>
@@ -30,41 +31,35 @@ function buildHtml(data) {
 </div>
 </div>`;
     }
+
     return html;
 }
 
 function handle_typing() {
-    var html = "";
-    var parent_div = document.getElementById("place_cards_here");
-    var thing_that_is_being_typed_in_the_search_box = document.getElementById("searchbox").value;
-    if (thing_that_is_being_typed_in_the_search_box == "") {
-        parent_div.innerHTML = globalData;
+    let html = "";
+    const searchBoxContents = searchBox.value;
+    if (searchBoxContents) {
+        parentDiv.innerHTML = globalData;
         return;
     }
     var data = globalData;
     for (var i = 3; i < data["addons"].length; i++) {
-        var name = data["addons"][i]['id'];
-        name = name;
-        var title = name;
-        title = title.replace("_", " ");
-        title = title.charAt(0).toUpperCase() + title.slice(1);
-        var description = data["addons"][i]['description'];
-        description = description;
-        if ("name" in data["addons"][i]) {
-            title = data["addons"][i]['name'];
-            title = title;
-        }
-        if (title.includes(thing_that_is_being_typed_in_the_search_box) || description.includes(thing_that_is_being_typed_in_the_search_box) || name.includes(thing_that_is_being_typed_in_the_search_box)) {
+        const addon = data.addons[i];
+        const name = addon.id;
+        const description = addon.description;
+        const title = addon.name ? addon.name : name[0].toUpperCase() + name.slice(1).replace("_", " ");
+        if (title.includes(searchBoxContents) || description.includes(searchBoxContents) || name.includes(searchBoxContents)) {
             html += `<div class="card" style="width: 18rem;">
 <div class="card-body">
-    <h5 class="card-title">${title.replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">${name.replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</h6>
-    <p class="card-text markdownContent">${marked.parse(description).replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</p>
+    <h5 class="card-title">${title.replace(searchBoxContents, "<span style='background-color:yellow;color:black;'>" + searchBoxContents + "</span>")}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">${name.replace(searchBoxContents, "<span style='background-color:yellow;color:black;'>" + searchBoxContents + "</span>")}</h6>
+    <p class="card-text markdownContent">${marked.parse(description).replace(searchBoxContents, "<span style='background-color:yellow;color:black;'>" + searchBoxContents + "</span>")}</p>
     <a href="/@plugins/plugin_slug?plugin=${name}" class="card-link btn btn-primary">View plugin</a>
 </div>
 </div>`
         }
-        parent_div.innerHTML = html;
+        parentDiv.innerHTML = html;
+        return;
     }
 }
 
@@ -84,6 +79,7 @@ function main() {
         });
 
     searchBox.addEventListener('input', handle_typing);
+    return 0;
 }
 
-main();
+let _ = main();
