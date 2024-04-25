@@ -35,10 +35,11 @@ function buildHtml(data) {
 
 function handle_typing() {
     var html = "";
+    var parent_div = document.getElementById("place_cards_here");
     var thing_that_is_being_typed_in_the_search_box = document.getElementById("searchbox").value;
     if (thing_that_is_being_typed_in_the_search_box == "") {
-        var parent_div = document.getElementById("place_cards_here");
         parent_div.innerHTML = globalData;
+        return;
     }
     var data = globalData;
     for (var i = 3; i < data["addons"].length; i++) {
@@ -55,15 +56,14 @@ function handle_typing() {
         }
         if (title.includes(thing_that_is_being_typed_in_the_search_box) || description.includes(thing_that_is_being_typed_in_the_search_box) || name.includes(thing_that_is_being_typed_in_the_search_box)) {
             html += `<div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">${title.replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">${name.replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</h6>
-              <p class="card-text markdownContent">${marked.parse(description).replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</p>
-              <a href="/@plugins/plugin_slug?plugin=${name}" class="card-link btn btn-primary">View plugin</a>
-            </div>
-            </div>`
+<div class="card-body">
+    <h5 class="card-title">${title.replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">${name.replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</h6>
+    <p class="card-text markdownContent">${marked.parse(description).replace(thing_that_is_being_typed_in_the_search_box, "<span style='background-color:yellow;color:black;'>" + thing_that_is_being_typed_in_the_search_box + "</span>")}</p>
+    <a href="/@plugins/plugin_slug?plugin=${name}" class="card-link btn btn-primary">View plugin</a>
+</div>
+</div>`
         }
-        var parent_div = document.getElementById("place_cards_here");
         parent_div.innerHTML = html;
     }
 }
